@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<aiml version="1.0">
+
+<!-- Free software (c)2008 Square Bear. -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License -->
+<!-- as published by the Free Software Foundation. -->
+<!-- Complies with AIML 1.0.1 Tag Set Specification -->
+<!-- as adopted by the ALICE A.I. Foundation. -->
+<!-- happy.aiml by Square Bear -->
+<!-- http://www.square-bear.co.uk -->
+
+
+<!-- These categories deal with Happy Birthday. My bot's birthday is January 2nd. -->
+<!-- Remember to put 2 figures in the date so March 8 becomes March 08 -->
+
+<category>
+<pattern>HAPPY BIRTHDAY</pattern>
+<template>
+<srai>BIRTHDAYCHECK<date format="%B %d"/></srai>
+</template>
+</category>   
+
+
+<!-- Category for month before birthday -->
+
+<category>
+<pattern>BIRTHDAYCHECK DECEMBER *</pattern>
+<template>
+Thanks but my birthday isn't until next month.
+</template>
+</category>
+
+
+<!-- Category for month after birthday -->
+
+<category>
+<pattern>BIRTHDAYCHECK FEBRUARY *</pattern>
+<template>
+You missed my birthday. It was last month on<bot name="birthday"/>.
+</template>
+</category>
+
+
+<!-- Category for 2 days before birthday -->
+
+<category>
+<pattern>BIRTHDAYCHECK DECEMBER 31</pattern>
+<template>
+Thanks but my birthday isn't for a couple of days yet.
+</template>
+</category>
+
+<!-- Category for 1 day before birthday -->
+
+<category>
+<pattern>BIRTHDAYCHECK JANUARY 01</pattern>
+<template>
+Thanks but my birthday is tomorrow. I'm getting excited.
+</template>
+</category>
+
+
+<!-- Category for birthday on correct day -->
+
+<category>
+<pattern>BIRTHDAYCHECK JANUARY 02</pattern>
+<template>
+Hey thanks for that<get name="name"/>. I'm having a great day so far.
+</template>
+</category>
+
+
+<!-- Category for 1 day after birthday -->
+
+<category>
+<pattern>BIRTHDAYCHECK JANUARY 03</pattern>
+<template>
+My birthday was yesterday but thanks anyway.
+</template>
+</category>
+
+
+<!-- Category for 2 day after birthday -->
+
+<category>
+<pattern>BIRTHDAYCHECK JANUARY 04</pattern>
+<template>
+You're a bit late. My birthday was two days ago.
+</template>
+</category>
+
+
+<!-- Category for any other day -->
+
+<category>
+<pattern>BIRTHDAYCHECK *</pattern>
+<template>
+Thanks<get name="name"/>but today is<star/>.<br/>
+My birthday is on<bot name="birthday"/>not today.
+</template>
+</category>
+
+
+<!-- These categories deal with Happy Christmas and shouldn't need changing apart from the responses. -->
+
+<category>
+<pattern>MERRY CHRISTMAS</pattern>
+<template>
+<srai>HAPPY CHRISTMAS</srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY CHRISTMAS</pattern>
+<template>
+<srai>CHRISTMASCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>CHRISTMASCHECK DECEMBER *</pattern>
+<template>
+Happy Christmas to you too<get name="name"/>.
+</template>
+</category>
+
+<category>
+<pattern>CHRISTMASCHECK DECEMBER 24</pattern>
+<template>
+Happy Christmas to you too<get name="name"/>. What will you be doing tomorrow?
+</template>
+</category>
+
+<category>
+<pattern>CHRISTMASCHECK DECEMBER 25</pattern>
+<template>
+Happy Christmas to you too<get name="name"/>. Are you enjoying your day?
+</template>
+</category>
+
+<category>
+<pattern>CHRISTMASCHECK DECEMBER 26</pattern>
+<template>
+Happy Christmas to you too<get name="name"/>. I hope you had a good day yesterday.
+</template>
+</category>
+
+<category>
+<pattern>CHRISTMASCHECK JANUARY *</pattern>
+<template>
+You're a bit late. Christmas was last month.
+</template>
+</category>
+
+<category>
+<pattern>CHRISTMASCHECK *</pattern>
+<template>
+Christmas is in December not<date format="%B"/>.
+</template>
+</category>
+
+
+<!-- These categories deal with Happy New Year and shouldn't need changing apart from the responses. -->
+
+<category>
+<pattern>HAPPY NEW YEAR</pattern>
+<template>
+<srai>NEWYEARCHECK<date format="%B"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>NEWYEARCHECK DECEMBER</pattern>
+<template>
+Happy New Year to you too when it happens. Are you doing anything special for New Year's Eve?
+</template>
+</category>
+
+<category>
+<pattern>NEWYEARCHECK JANUARY</pattern>
+<template>
+Happy New Year to you too. I hope<date format="%Y"/>is a great year for you.
+</template>
+</category>
+
+<category>
+<pattern>NEWYEARCHECK *</pattern>
+<template>
+Thanks but it's<star/>not January.
+</template>
+</category>
+
+<category>
+<pattern>HAPPY MOTHERS DAY</pattern>
+<template>
+<srai>MOTHERSDAYCHECK<date format="%B"/></srai>
+</template>
+</category>
+<category>
+<pattern>HAPPY MOTHER S DAY</pattern>
+<template>
+<srai>MOTHERSDAYCHECK<date format="%B"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>MOTHERSDAYCHECK MARCH</pattern>
+<template>
+Thanks but I am not a mother. I hope you are nice to your mother though.</template>
+</category>
+
+<category>
+<pattern>MOTHERSDAYCHECK *</pattern>
+<template>
+Thanks but Mother's Day is in March not<star/>.
+</template>
+</category>
+
+<category>
+<pattern>HAPPY HALLOWEEN</pattern>
+<template>
+<srai>HALLOWEENCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HALLOWEENCHECK OCTOBER *</pattern>
+<template>
+Happy Halloween to you too<get name="name"/> when it comes later this month.
+</template>
+</category>
+
+<category>
+<pattern>HALLOWEENCHECK OCTOBER 31</pattern>
+<template>
+Happy Halloween to you too<get name="name"/>. Are you going trick or treating tonight?
+</template>
+</category>
+
+<category>
+<pattern>HALLOWEENCHECK NOVEMBER *</pattern>
+<template>
+You're a bit late. Halloween was last month.
+</template>
+</category>
+
+<category>
+<pattern>HALLOWEENCHECK *</pattern>
+<template>
+Halloween is in October not<date format="%B"/>.
+</template>
+</category>
+<!-- These categories deal with Groundhog Day and shouldn't need changing apart from the responses. -->
+
+<category>
+<pattern>HAPPY GROUNDHOG DAY</pattern>
+<template>
+<srai>GROUNDHOGCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY GROUNDHOG S DAY</pattern>
+<template>
+<srai>GROUNDHOGCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>GROUNDHOGCHECK FEBRUARY *</pattern>
+<template>
+Happy Groundhog day to you too<get name="name"/>.
+</template>
+</category>
+
+<category>
+<pattern>GROUNDHOGCHECK FEBRUARY 1</pattern>
+<template>
+Happy Groundhog day to you too<get name="name"/>. What will you be doing tomorrow?
+</template>
+</category>
+
+<category>
+<pattern>GROUNDHOGCHECK FEBRUARY 2</pattern>
+<template>
+Happy Groundhog day to you too<get name="name"/>. Are you enjoying your day?
+</template>
+</category>
+
+<category>
+<pattern>GROUNDHOGCHECK FEBRUARY 3</pattern>
+<template>
+Happy Groundhog day to you too<get name="name"/>. I hope you had a good day yesterday.
+</template>
+</category>
+
+<category>
+<pattern>GROUNDHOGCHECK MARCH *</pattern>
+<template>
+You're a bit late. Groundhog day was last month.
+</template>
+</category>
+
+<category>
+<pattern>GROUNDHOGCHECK *</pattern>
+<template>
+Groundhog day is in February not<star/>.
+</template>
+</category>
+
+<!-- These categories deal with Valentine's Day and shouldn't need changing apart from the responses. -->
+
+<category>
+<pattern>HAPPY VALENTINE DAY</pattern>
+<template>
+<srai>VALENTINECHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY VALENTINES DAY</pattern>
+<template>
+<srai>VALENTINECHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY VALENTINE S DAY</pattern>
+<template>
+<srai>VALENTINECHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>VALENTINECHECK FEBRUARY *</pattern>
+<template>
+Happy Valentine's day to you too<get name="name"/>.
+</template>
+</category>
+
+<category>
+<pattern>VALENTINECHECK FEBRUARY 13</pattern>
+<template>
+Happy Valentine's day to you too<get name="name"/>. What will you be doing tomorrow?
+</template>
+</category>
+
+<category>
+<pattern>VALENTINECHECK FEBRUARY 14</pattern>
+<template>
+Happy Valentine's day to you too<get name="name"/>. Are you enjoying your day?
+</template>
+</category>
+
+<category>
+<pattern>VALENTINECHECK FEBRUARY 15</pattern>
+<template>
+Happy Valentine's day to you too<get name="name"/>. I hope you got lots of presents and cards.
+</template>
+</category>
+
+<category>
+<pattern>VALENTINECHECK MARCH *</pattern>
+<template>
+You're a bit late. Valentine's day was last month.
+</template>
+</category>
+
+<category>
+<pattern>VALENTINECHECK *</pattern>
+<template>
+Valentine's day is February 14th not<star/>.
+</template>
+</category>
+
+
+<!-- These categories deal with Leap Year Day and shouldn't need changing apart from the responses. -->
+
+<category>
+<pattern>HAPPY LEAP DAY</pattern>
+<template>
+<srai>LEAPYEARCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY LEAP YEAR</pattern>
+<template>
+<srai>LEAPYEARCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY LEAP YEAR *</pattern>
+<template>
+<srai>LEAPYEARCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>LEAPYEARCHECK FEBRUARY 29</pattern>
+<template>
+Happy Leap Year to you too<get name="name"/>. Today is Febraury 29th which only comes round every 4 years.
+</template>
+</category>
+
+<category>
+<pattern>LEAPYEARCHECK *</pattern>
+<template>
+Leap Year day is on February 29th every 4 years, not<star/>.
+</template>
+</category>
+
+
+
+<!-- These categories deal with St. Patrick's Day and shouldn't need changing apart from the responses. -->
+
+<category>
+<pattern>HAPPY ST PATRICK DAY</pattern>
+<template>
+<srai>STPATRICKCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY ST PATRICK S DAY</pattern>
+<template>
+<srai>STPATRICKCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>STPATRICKCHECK MARCH *</pattern>
+<template>
+Happy St. Patrick's day to you too<get name="name"/>.
+</template>
+</category>
+
+<category>
+<pattern>STPATRICKCHECK MARCH 16</pattern>
+<template>
+Happy St. Patrick's day to you too<get name="name"/>. What will you be doing tomorrow?
+</template>
+</category>
+
+<category>
+<pattern>STPATRICKCHECK MARCH 17</pattern>
+<template>
+Happy St. Patrick's day to you too<get name="name"/>. Are you enjoying your day?
+</template>
+</category>
+
+<category>
+<pattern>STPATRICKCHECK MARCH 18</pattern>
+<template>
+Happy St. Patrick's day to you too<get name="name"/>. I hope you had a good day yesterday.
+</template>
+</category>
+
+<category>
+<pattern>STPATRICKCHECK APRIL *</pattern>
+<template>
+You're a bit late. St. Patrick's day was last month.
+</template>
+</category>
+
+<category>
+<pattern>STPATRICKCHECK *</pattern>
+<template>
+St. Patrick's day is in March not<star/>.
+</template>
+</category>
+
+<!-- These categories deal with April Fool's Day and shouldn't need changing apart from the responses. -->
+
+<category>
+<pattern>HAPPY APRIL FOOL DAY</pattern>
+<template>
+<srai>APRILFOOLCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY APRIL FOOL S DAY</pattern>
+<template>
+<srai>APRILFOOLCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>APRILFOOLCHECK APRIL *</pattern>
+<template>
+You're trying to play a prank on me a little late <get name="name"/>.
+</template>
+</category>
+
+<category>
+<pattern>APRILFOOLCHECK MARCH 31</pattern>
+<template>
+Happy April Fool's day to you too<get name="name"/>. What jokes you be doing tomorrow?
+</template>
+</category>
+
+<category>
+<pattern>APRILFOOLCHECK APRIL 01</pattern>
+<template>
+Happy April Fool's day to you too<get name="name"/>. Are you doing a lot of jokes today?
+</template>
+</category>
+
+<category>
+<pattern>APRILFOOLCHECK APRIL 02</pattern>
+<template>
+Happy April Fool's day to you too <get name="name"/>. I hope you played some good jokes yesterday.
+</template>
+</category>
+
+<category>
+<pattern>APRILFOOLCHECK MAY *</pattern>
+<template>
+You're a bit late. April Fool's day was last month.
+</template>
+</category>
+
+<category>
+<pattern>APRILFOOLCHECK *</pattern>
+<template>
+April Fool's day is in April not<star/>.
+</template>
+</category>
+
+<!-- These categories deal with Independence Day and shouldn't need changing apart from the responses. -->
+
+
+<category>
+<pattern>HAPPY INDEPENDENCE DAY</pattern>
+<template>
+<srai>INDEPENDENCEDAYCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY 4TH OF JULY</pattern>
+<template>
+<srai>INDEPENDENCEDAYCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>HAPPY FOURTH OF JULY</pattern>
+<template>
+<srai>INDEPENDENCEDAYCHECK<date format="%B %d"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>INDEPENDENCEDAYCHECK JULY *</pattern>
+<template>
+Happy Independence day to you too<get name="name"/>.
+</template>
+</category>
+
+<category>
+<pattern>INDEPENDENCEDAYCHECK JULY 03</pattern>
+<template>
+Happy Independence day to you too<get name="name"/>. What will you be doing tomorrow?
+</template>
+</category>
+
+<category>
+<pattern>INDEPENDENCEDAYCHECK JULY 04</pattern>
+<template>
+Happy Independence day to you too<get name="name"/>. Are you enjoying your day?
+</template>
+</category>
+
+<category>
+<pattern>INDEPENDENCEDAYCHECK JULY 05</pattern>
+<template>
+Happy Independence day to you too<get name="name"/>. I hope you had a good day yesterday.
+</template>
+</category>
+
+<category>
+<pattern>INDEPENDENCEDAYCHECK AUGUST *</pattern>
+<template>
+You're a bit late. Independence day was last month.
+</template>
+</category>
+
+<category>
+<pattern>INDEPENDENCEDAYCHECK *</pattern>
+<template>
+I thought Independence Day was July 4th? Today is<star/>.
+</template>
+</category> 
+
+
+</aiml>

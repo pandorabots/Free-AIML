@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<aiml version="1.0">
+
+<!-- Free software (c)2008 Square Bear. -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License -->
+<!-- as published by the Free Software Foundation. -->
+<!-- Complies with AIML 1.0.1 Tag Set Specification -->
+<!-- as adopted by the ALICE A.I. Foundation. -->
+<!-- botcompare.aiml by Square Bear -->
+<!-- http://www.square-bear.co.uk -->
+<!-- Compares two single word variables to see if they match. -->
+
+
+<!-- Say "BOTCOMPARE" then your two variables to check them out. -->
+<!-- The result is a variable called "match" which will be YES if they are the same and NO if they are different -->
+<!-- The variable "match" will be set to FAIL if there is a problem comparing (no parameters passed or too many etc) -->
+<!-- Say "DEMOCOMPARE" to see a little demo of it in action -->
+
+
+<!-- The demo part of the AIML, not really needed. -->
+
+<category>
+<pattern>DEMOCOMPARE</pattern>
+<template>
+This demo will show some random Simpson characters and see if they match:<br/><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/>
+<srai>democompare1</srai><br/><br/>
+End of demo. To use BOTCOMPARE, type the following into your AIML:<br/><br/>
+BOTCOMPARE&lt;get name="xxxxx"/&gt;&lt;get name="yyyyy"/&gt;<br/><br/>
+Replace xxxxx and yyyyy with your own variables.
+</template>
+</category>
+
+<category>
+<pattern>DEMOCOMPARE1</pattern>
+<template>
+<think>
+	 <set name="test1"><srai>RANDOMSIMPSON</srai></set>
+	 <set name="test2"><srai>RANDOMSIMPSON</srai></set>
+</think>
+<srai>BOTCOMPARE <get name="test1"/> <get name="test2"/></srai>
+ <get name="test1"/> + <get name="test2"/> = <get name="match"/> 
+</template>
+</category>
+
+
+
+<category>
+<pattern>IS * EQUAL TO *</pattern>
+<template>
+<srai>BOTCOMPARE <star/> XSPLIT <star index="2"/></srai>
+ <get name="match"/> 
+</template>
+</category>
+
+
+
+<category>
+<pattern>RANDOMSIMPSON</pattern>
+<template>
+<random>
+	<li>Bart</li>
+	<li>Homer</li>
+	<li>Lisa</li>
+</random>
+</template>
+</category>
+
+
+<!-- Nothing below here should be amended. -->
+<!-- This works by making a temporary category called "BOTCHECK + the first parameter" -->
+<!-- It then <SRAI>s "BOTCHECK + the second parameter" -->
+<!-- If category "BOTCHECK *" is called then the two are different. -->
+<!-- If category "BOTCHECK + first parameter" is called then the two are the same. -->
+<!-- Finally, we reset the temp category in case we need to check for another match. -->
+
+<category>
+<pattern>BOT COMPARE *</pattern>
+<template>
+<srai>BOTCOMPARE <star/></srai>
+</template>
+</category>
+
+<category>
+<pattern>BOTCOMPARE * *</pattern>
+<template>
+<think>
+	 <set name="comparevalue1"> <star/></set>
+	 <set name="comparevalue2"> <star index="2"/></set>
+</think>
+<srai>botcomparison</srai>
+</template>
+</category>
+
+<category>
+<pattern>BOTCOMPARE _ XSPLIT *</pattern>
+<template>
+<think>
+	 <set name="comparevalue1"> <star/></set>
+	 <set name="comparevalue2"> <star index="2"/></set>
+</think>
+<srai>botcomparison</srai>
+</template>
+</category>
+
+ <category>
+ <pattern>BOTCOMPARISON</pattern>
+ <template>
+ <learn>
+	<category>
+	 <pattern>
+	 <eval><uppercase>BOTCHECK <get name="comparevalue1"/></uppercase></eval>
+	 </pattern>
+	 <template>
+		<think>
+		 <set name="match">YES</set>
+		</think>
+	 </template>
+	</category>
+ </learn> 
+	<srai>botcheck <get name="comparevalue2"/></srai>
+	<srai>botremovecomparison</srai>
+ </template>
+ </category>
+
+<category>
+<pattern>BOTCHECK *</pattern>
+<template>
+	<think>
+	 <set name="match">NO</set>
+	</think>
+</template>
+</category>
+
+ <category>
+ <pattern>BOTREMOVECOMPARISON</pattern>
+ <template>
+ <learn>
+	<category>
+	 <pattern>
+	 <eval><uppercase>BOTCHECK <get name="comparevalue1"/></uppercase></eval>
+	 </pattern>
+	 <template>
+		<think>
+		 <set name="match">NO</set>
+		</think>
+	 </template>
+	</category>
+ </learn> 
+ </template>
+ </category>
+
+
+<!-- A few error message in case BOTCOMPARE is used wrongly. -->
+
+<category>
+<pattern>BOTCOMPARE</pattern>
+<template>
+BOTCOMPARE failed as nothing was passed to compare.<br/>
+Usgae: BOTCOMPARE&lt;get name="xxxxx"/&gt;&lt;get name="yyyyy"/&gt;<br/><br/>
+Replace xxxxx and yyyyy with your own variables.
+<think>
+ <set name="match">FAIL</set>
+</think>
+</template>
+</category>
+
+<category>
+<pattern>BOTCOMPARE *</pattern>
+<template>
+BOTCOMPARE failed as only one item was passed to compare.<br/>
+Usage: BOTCOMPARE&lt;get name="xxxxx"/&gt;&lt;get name="yyyyy"/&gt;<br/><br/>
+Replace xxxxx and yyyyy with your own variables.
+<think>
+ <set name="match">FAIL</set>
+</think>
+</template>
+</category>
+
+<category>
+<pattern>BOTCOMPARE * * *</pattern>
+<template>
+BOTCOMPARE failed as too many items were passed to compare.<br/>
+Usage: BOTCOMPARE&lt;get name="xxxxx"/&gt;&lt;get name="yyyyy"/&gt;<br/><br/>
+Replace xxxxx and yyyyy with your own variables.
+<think>
+ <set name="match">FAIL</set>
+</think>
+</template>
+</category>
+
+</aiml>
